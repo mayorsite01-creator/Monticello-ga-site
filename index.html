@@ -3,1214 +3,1398 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>City of Monticello | Mayor DeAshley Thurman</title>
+  <title>Mayor DeAshley Thurman | Official Digital Office | Monticello, Georgia</title>
 
-  <!-- Cormorant Garamond: authoritative editorial serif for headings -->
-  <!-- Jost: precise geometric sans for UI text -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'forest': {
+              950: '#080f0a',
+              900: '#0e1a10',
+              800: '#142216',
+              700: '#1C3A22',   /* Forest Green — primary */
+              600: '#224a29',
+              500: '#2A5234',
+              400: '#3d7a47',
+              300: '#60a46c',
+              200: '#9ecba6',
+              100: '#d6eeda',
+            },
+            'gold': {
+              900: '#3a2800',
+              800: '#664700',
+              700: '#8a6200',
+              600: '#a07800',
+              500: '#B89A2A',   /* Heritage Gold — accent */
+              400: '#CDB045',
+              300: '#ddc870',
+              200: '#eedc9a',
+              100: '#faf3d0',
+            },
+            'cream': {
+              100: '#faf9f6',
+              150: '#f4f2ec',
+              200: '#ece8de',
+              300: '#d8d2c0',
+              400: '#b0a888',
+              500: '#7a7058',
+              600: '#4a4232',
+            },
+          },
+          fontFamily: {
+            display: ['Cormorant Garamond', 'Georgia', 'serif'],
+            body:    ['DM Sans', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
   <style>
-    /* ─────────────────────────────────────────────
-       DESIGN TOKENS
-    ───────────────────────────────────────────── */
+    /* ── CSS CUSTOM PROPERTIES ──────────────────── */
     :root {
-      --green:      #1C3A22;   /* deep forest — commands authority */
-      --green-mid:  #2A5234;   /* mid forest — hover states */
-      --green-pale: #f2f7f3;   /* barely-green tint — section bg */
-      --gold:       #B89A2A;   /* heritage gold — restrained, not flashy */
-      --gold-light: #CDB045;
-      --gold-wash:  #fdf8ec;   /* warm cream — form background */
-      --ink:        #0e160f;   /* near-black */
-      --muted:      #6b7b6e;   /* gray-green muted text */
-      --rule:       #dde5de;   /* hairline border */
-      --white:      #ffffff;
-      --off-white:  #fafbfa;
+      --green-darkest:  #080f0a;
+      --green-dark:     #0e1a10;
+      --green-deep:     #142216;
+      --green-main:     #1C3A22;
+      --green-mid:      #2A5234;
+      --gold-main:      #B89A2A;
+      --gold-light:     #CDB045;
+      --gold-pale:      #eedc9a;
+      --gold-wash:      #faf3d0;
+      --white:          #ffffff;
+      --cream-light:    #faf9f6;
+      --cream-mid:      #ece8de;
+      --cream-border:   #d8d2c0;
+      --text-dark:      #0d1610;
+      --text-mid:       #4a4232;
     }
 
-    /* ─────────────────────────────────────────────
-       RESET & BASE
-    ───────────────────────────────────────────── */
+    /* ── BASE ────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Jost', system-ui, sans-serif;
+      font-family: 'DM Sans', system-ui, sans-serif;
       background: var(--white);
-      color: var(--ink);
+      color: var(--text-dark);
       -webkit-font-smoothing: antialiased;
     }
-    ::selection { background: var(--gold); color: var(--ink); }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--white); }
-    ::-webkit-scrollbar-thumb { background: var(--green); border-radius: 2px; }
-    a { text-decoration: none; color: inherit; }
+    ::selection { background: var(--gold-main); color: var(--green-dark); }
 
-    /* ─────────────────────────────────────────────
-       TYPOGRAPHY HELPERS
-    ───────────────────────────────────────────── */
-    .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
-    .eyebrow {
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
-      font-size: 0.62rem;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-      color: var(--gold);
+    /* ── NOISE TEXTURE ────────────────────────────── */
+    .noise::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
     }
 
-    /* ─────────────────────────────────────────────
-       TOP IDENTITY BAR
-    ───────────────────────────────────────────── */
-    #identity-bar {
-      background: var(--green);
-      border-bottom: 1px solid rgba(184, 154, 42, 0.2);
-      padding: 0.6rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      transition: box-shadow 0.3s ease;
-    }
-    #identity-bar.scrolled {
-      box-shadow: 0 2px 24px rgba(0,0,0,0.25);
-    }
-    .identity-name {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.05rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      line-height: 1.2;
-    }
-    .identity-sub {
-      font-family: 'Jost', sans-serif;
-      font-weight: 200;
-      font-size: 0.55rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: rgba(184, 154, 42, 0.65);
-      margin-top: 2px;
-    }
-    .nav-items {
-      display: flex;
-      align-items: center;
-      gap: 2.5rem;
-    }
-    .nav-item {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.7rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      cursor: pointer;
-      transition: color 0.2s;
-      background: none;
-      border: none;
-    }
-    .nav-item:hover { color: #fff; }
-    .nav-cta {
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
-      font-size: 0.65rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      background: var(--gold);
-      color: var(--ink);
-      padding: 0.55rem 1.25rem;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.18s;
-    }
-    .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+    /* ── TYPOGRAPHY ───────────────────────────────── */
+    .font-display { font-family: 'Cormorant Garamond', Georgia, serif; }
 
-    /* Mobile nav */
-    #mobile-nav-btn {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
+    /* ── NAV ──────────────────────────────────────── */
+    #navbar {
+      transition: background 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
     }
-    #mobile-nav-btn span {
-      display: block;
-      width: 20px;
-      height: 1px;
-      background: rgba(255,255,255,0.75);
-    }
-    #mobile-drawer {
-      display: none;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.25rem 2.5rem 1.5rem;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-    @media (max-width: 840px) {
-      .nav-items { display: none; }
-      #mobile-nav-btn { display: flex; }
-      #identity-bar { padding: 0.6rem 1.5rem; }
+    #navbar.scrolled {
+      background: rgba(8, 15, 10, 0.97) !important;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 2px 40px rgba(0,0,0,0.45);
+      padding-top: 0.7rem !important;
+      padding-bottom: 0.7rem !important;
     }
 
-    /* ─────────────────────────────────────────────
-       HERO
-    ───────────────────────────────────────────── */
-    #hero {
-      padding: 7rem 2.5rem 6rem;
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: 5rem;
-      align-items: center;
-    }
-    @media (max-width: 900px) {
-      #hero {
-        grid-template-columns: 1fr;
-        padding: 4rem 1.5rem 3.5rem;
-        gap: 0;
-      }
-      .hero-divider { display: none; }
-    }
-    .hero-divider {
-      width: 1px;
-      height: 180px;
-      background: linear-gradient(to bottom, transparent, var(--rule), transparent);
-      align-self: center;
-    }
-    .hero-headline {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: clamp(2.6rem, 5vw, 4rem);
-      line-height: 1.1;
-      color: var(--ink);
-      letter-spacing: -0.01em;
-    }
-    .hero-headline strong {
-      font-weight: 600;
-      color: var(--green);
-    }
-    .hero-sub {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-top: 1.25rem;
-      max-width: 380px;
-    }
-    @media (max-width: 900px) {
-      .hero-sub { margin-bottom: 3rem; }
-    }
-    /* Excellence badge in hero */
-    .excellence-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px 6px 8px;
-      border: 1px solid rgba(184,154,42,0.35);
-      background: var(--gold-wash);
-      margin-bottom: 1.75rem;
-    }
-    .excellence-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-    .excellence-badge-text {
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    /* ─────────────────────────────────────────────
-       THE BIG FOUR — Power Actions
-    ───────────────────────────────────────────── */
-    #actions {
-      background: var(--green-pale);
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 5rem 2.5rem;
-    }
-    .actions-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .actions-header {
-      margin-bottom: 3rem;
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-    .actions-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      color: var(--ink);
-      line-height: 1.2;
-    }
-    .actions-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-    }
-    @media (max-width: 640px) {
-      .actions-grid { grid-template-columns: 1fr; }
-      #actions { padding: 3.5rem 1.5rem; }
-    }
-
-    /* Each power action card */
-    .power-card {
-      background: var(--white);
-      padding: 2.5rem;
-      cursor: pointer;
+    /* ── NAV LINK ─────────────────────────────────── */
+    .nav-link {
       position: relative;
-      overflow: hidden;
-      transition: background 0.22s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      min-height: 200px;
-      border: none;
-      text-align: left;
-      width: 100%;
+      color: rgba(255,255,255,0.72);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
     }
-    /* Hover fill from left */
-    .power-card::before {
+    .nav-link::after {
       content: '';
       position: absolute;
-      inset: 0;
-      background: var(--green);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold-main);
+      transition: width 0.25s ease;
     }
-    .power-card:hover::before { transform: scaleX(1); }
-    .power-card:hover .pc-number,
-    .power-card:hover .pc-title,
-    .power-card:hover .pc-desc,
-    .power-card:hover .pc-cta { color: rgba(255,255,255,0.9); }
-    .power-card:hover .pc-cta { color: var(--gold); border-bottom-color: rgba(184,154,42,0.4); }
-    .power-card:hover .pc-icon-line { background: rgba(255,255,255,0.2); }
+    .nav-link:hover { color: #fff; }
+    .nav-link:hover::after { width: 100%; }
 
-    /* Card: primary gold — Contact Mayor */
-    .power-card.primary-card {
-      background: var(--green);
-    }
-    .power-card.primary-card::before {
-      background: #2A5234;
-    }
-    .power-card.primary-card .pc-number,
-    .power-card.primary-card .pc-title,
-    .power-card.primary-card .pc-desc { color: rgba(255,255,255,0.88); }
-    .power-card.primary-card .pc-cta { color: var(--gold); border-bottom-color: rgba(184,154,42,0.35); }
-    .power-card.primary-card .pc-icon-line { background: rgba(255,255,255,0.15); }
-
-    .pc-number {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 0.85rem;
-      font-weight: 300;
-      letter-spacing: 0.18em;
-      color: var(--gold);
-      margin-bottom: 1.25rem;
-      position: relative; z-index: 1;
-      transition: color 0.22s;
-    }
-    .power-card.primary-card .pc-number { color: rgba(184,154,42,0.8); }
-
-    .pc-icon-line {
-      width: 28px;
-      height: 1px;
-      background: var(--rule);
-      margin-bottom: 1.25rem;
-      position: relative; z-index: 1;
-      transition: background 0.22s;
-    }
-
-    .pc-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 600;
-      font-size: 1.5rem;
-      line-height: 1.2;
-      color: var(--ink);
-      margin-bottom: 0.65rem;
-      position: relative; z-index: 1;
-      transition: color 0.22s;
-    }
-
-    .pc-desc {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      flex: 1;
-      position: relative; z-index: 1;
-      transition: color 0.22s;
-    }
-    .power-card.primary-card .pc-desc { color: rgba(255,255,255,0.6); }
-
-    .pc-cta {
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
-      font-size: 0.62rem;
-      letter-spacing: 0.2em;
+    /* ── BUTTON: GHOST ────────────────────────────── */
+    .btn-ghost {
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--green);
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 2px;
-      align-self: flex-start;
-      position: relative; z-index: 1;
-      transition: color 0.22s, border-color 0.22s;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      transition: background 0.22s ease, border-color 0.22s ease,
+                  color 0.22s ease, transform 0.18s ease;
     }
-    .pc-cta-arrow {
-      display: inline-block;
-      transition: transform 0.22s ease;
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.55);
+      color: #fff;
+      transform: translateY(-1px);
     }
-    .power-card:hover .pc-cta-arrow,
-    .power-card.primary-card:hover .pc-cta-arrow { transform: translateX(3px); }
+    .btn-ghost:active { transform: translateY(0); }
 
-    /* ─────────────────────────────────────────────
-       MAYOR'S CORNER — minimal strip
-    ───────────────────────────────────────────── */
-    #mayors-corner {
-      padding: 5rem 2.5rem;
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1px 1fr;
-      gap: 4rem;
-      align-items: start;
+    /* ── BUTTON: PRIMARY FOREST GREEN ─────────────── */
+    .btn-green {
+      background: linear-gradient(135deg, #142216 0%, var(--green-main) 50%, #2A5234 100%);
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid rgba(28,58,34,0.5);
+      box-shadow: 0 4px 20px rgba(28,58,34,0.38), inset 0 1px 0 rgba(255,255,255,0.1);
+      transition: background-position 0.4s ease, transform 0.18s ease, box-shadow 0.22s ease;
     }
-    @media (max-width: 860px) {
-      #mayors-corner {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        padding: 3.5rem 1.5rem;
-      }
-      .corner-divider { display: none; }
+    .btn-green:hover {
+      background-position: 100% 50%;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(28,58,34,0.52), inset 0 1px 0 rgba(255,255,255,0.14);
     }
-    .corner-divider {
-      width: 1px;
-      background: var(--rule);
-      height: 100%;
-      min-height: 160px;
+    .btn-green:active {
+      transform: translateY(0);
+      box-shadow: 0 3px 12px rgba(28,58,34,0.38);
     }
-    .corner-quote {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 300;
-      font-size: 1.45rem;
-      line-height: 1.55;
-      color: var(--ink);
-      font-style: italic;
-    }
-    .corner-attribution {
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
-      font-size: 0.7rem;
+
+    /* ── BUTTON: GOLD (support/accent) ───────────── */
+    .btn-gold {
+      background: linear-gradient(135deg, #8a6200 0%, var(--gold-main) 50%, #CDB045 100%);
+      background-size: 200% 200%;
+      background-position: 0% 50%;
+      color: var(--green-dark);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--green);
-      margin-top: 1.25rem;
+      border: 1px solid rgba(184,154,42,0.6);
+      box-shadow: 0 2px 14px rgba(184,154,42,0.3);
+      transition: background-position 0.4s ease, transform 0.18s ease, box-shadow 0.22s ease;
     }
-    .excellence-strip {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
+    .btn-gold:hover {
+      background-position: 100% 50%;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 22px rgba(184,154,42,0.5);
     }
-    .excellence-icon-box {
-      width: 44px;
-      height: 44px;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .excellence-heading {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 600;
-      font-size: 1.1rem;
-      color: var(--ink);
-      line-height: 1.3;
-      margin-bottom: 0.4rem;
-    }
-    .excellence-body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.8rem;
-      line-height: 1.7;
-      color: var(--muted);
+    .btn-gold:active { transform: translateY(0); }
+
+    /* ── HERO ─────────────────────────────────────── */
+    #hero {
+      background:
+        radial-gradient(ellipse at 65% 15%, rgba(184,154,42,0.1) 0%, transparent 55%),
+        radial-gradient(ellipse at 15% 85%, rgba(42,82,52,0.2) 0%, transparent 50%),
+        linear-gradient(150deg, #080f0a 0%, #0e1a10 30%, #142216 60%, #1C3A22 100%);
+      position: relative;
+      overflow: hidden;
     }
 
-    /* ─────────────────────────────────────────────
-       CONTACT MODAL
-    ───────────────────────────────────────────── */
-    #modal-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(14, 22, 15, 0.65);
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
+    .geo-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,42,0.1);
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      animation: pulse-ring 9s ease-in-out infinite;
     }
-    #modal-overlay.open {
-      opacity: 1;
-      pointer-events: auto;
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.03); }
     }
-    #modal-box {
-      background: var(--white);
-      width: 100%;
-      max-width: 520px;
-      max-height: 90svh;
-      overflow-y: auto;
-      transform: translateY(18px);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-      position: relative;
-    }
-    #modal-overlay.open #modal-box {
-      transform: translateY(0);
-    }
-    .modal-header {
-      background: var(--green);
-      padding: 2rem 2.25rem 1.75rem;
-      position: relative;
-    }
-    .modal-gold-bar {
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gold);
-    }
-    .modal-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1.5rem;
-      color: var(--white);
-      margin-bottom: 3px;
-    }
-    .modal-subtitle {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.55);
-      letter-spacing: 0.06em;
-    }
-    .modal-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      cursor: pointer;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255,255,255,0.7);
-      font-size: 1.1rem;
-      transition: background 0.2s, color 0.2s;
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-    }
-    .modal-close:hover { background: rgba(255,255,255,0.18); color: #fff; }
-    .modal-body { padding: 2rem 2.25rem; }
 
-    /* Form fields — ultra-clean */
-    .field-group { margin-bottom: 1.1rem; }
-    .field-label {
-      display: block;
-      font-family: 'Jost', sans-serif;
-      font-weight: 500;
-      font-size: 0.6rem;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--ink);
-      margin-bottom: 0.4rem;
+    /* ── PHOTO FRAME ──────────────────────────────── */
+    .photo-frame {
+      background: linear-gradient(145deg, #1C3A22, #080f0a);
+      border: 1.5px solid rgba(184,154,42,0.35);
+      box-shadow:
+        0 0 0 6px rgba(184,154,42,0.06),
+        0 0 0 14px rgba(184,154,42,0.03),
+        0 40px 100px rgba(0,0,0,0.55);
     }
-    .field-input {
-      width: 100%;
-      background: var(--off-white);
-      border: 1px solid var(--rule);
-      border-bottom: 2px solid var(--rule);
-      color: var(--ink);
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.9rem;
-      padding: 0.78rem 0.9rem;
+
+    /* ── ABOUT SECTION ────────────────────────────── */
+    #about {
+      background:
+        radial-gradient(ellipse at 80% 10%, rgba(184,154,42,0.08) 0%, transparent 55%),
+        linear-gradient(160deg, #080f0a 0%, #0e1a10 55%, #142216 100%);
+      position: relative;
+    }
+    .bio-accent-line {
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, var(--gold-main), transparent);
+    }
+
+    /* ── PLAN CARDS ───────────────────────────────── */
+    .plan-card {
+      background: var(--white);
+      border: 1px solid var(--cream-mid);
+      border-top: 3px solid var(--gold-main);
+      border-radius: 14px;
+      padding: 2.25rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-top-color 0.3s ease;
+    }
+    .plan-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(28,58,34,0.1);
+      border-top-color: var(--green-main);
+    }
+    .plan-card .icon-wrap {
+      width: 54px; height: 54px;
+      background: linear-gradient(135deg, var(--green-deep), var(--green-main));
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 18px rgba(28,58,34,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .plan-card:hover .icon-wrap {
+      transform: scale(1.07);
+      box-shadow: 0 10px 26px rgba(28,58,34,0.42);
+    }
+
+    /* ── CONTACT SECTION ──────────────────────────── */
+    #contact { background: var(--cream-light); }
+    .form-input {
+      background: var(--white);
+      border: 1.5px solid var(--cream-border);
+      color: var(--text-dark);
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+    .form-input:focus {
       outline: none;
-      transition: border-color 0.2s, background 0.2s;
-      appearance: none;
-      border-radius: 0;
+      border-color: var(--gold-main);
+      box-shadow: 0 0 0 3px rgba(184,154,42,0.14);
     }
-    .field-input:focus {
-      border-bottom-color: var(--green);
-      background: var(--white);
-    }
-    .field-input::placeholder { color: #a8b4a9; }
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.85rem;
-    }
-    @media (max-width: 480px) { .field-row { grid-template-columns: 1fr; } }
+    .form-input::placeholder { color: #b0a888; }
 
-    .submit-btn {
-      width: 100%;
-      padding: 1rem;
-      background: var(--green);
-      color: var(--white);
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
+    /* ── SECTION LABEL ────────────────────────────── */
+    .section-label {
       font-size: 0.7rem;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.18s;
-      border-radius: 0;
+      font-weight: 500;
     }
-    .submit-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
-    .submit-btn:active { transform: translateY(0); }
 
-    /* Success state */
-    #modal-success {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding: 3rem 2rem;
+    /* ── GOLD RULE ────────────────────────────────── */
+    .gold-rule {
+      display: block;
+      width: 40px; height: 2px;
+      background: var(--gold-main);
+      margin: 0 auto;
+      border-radius: 2px;
     }
-    #modal-success.show { display: flex; }
-    .success-check {
-      width: 56px;
-      height: 56px;
-      background: var(--green);
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: #080f0a;
+      border-top: 1px solid rgba(184,154,42,0.18);
+    }
+
+    /* ── HERO CTA ROW ─────────────────────────────── */
+    #hero-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .hero-cta-btn {
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 1.25rem;
-      font-size: 1.5rem;
+      gap: 0.5rem;
+      height: 52px;
+      padding: 0 1.75rem;
+      white-space: nowrap;
+      text-align: center;
     }
-    .success-title {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 0.5rem;
+    @media (min-width: 768px) {
+      #hero-cta-row { flex-direction: row; align-items: stretch; }
+      .hero-cta-btn { flex: 1; height: auto; min-height: 52px; }
     }
-    .success-body {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 300px;
-    }
-    .success-close {
-      margin-top: 1.5rem;
-      padding: 0.7rem 2rem;
-      background: var(--green);
-      color: var(--white);
-      font-family: 'Jost', sans-serif;
-      font-weight: 600;
-      font-size: 0.65rem;
+
+    /* ── OFFICIAL BADGE ───────────────────────────── */
+    .official-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 14px 5px 8px;
+      background: rgba(184,154,42,0.1);
+      border: 1px solid rgba(184,154,42,0.3);
+      border-radius: 100px;
+      font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      border: none;
-      cursor: pointer;
+      color: rgba(238,220,154,0.9);
+      font-weight: 500;
+    }
+    .official-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold-main);
+      box-shadow: 0 0 6px rgba(184,154,42,0.9);
+      animation: blink 2.5s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.35; }
     }
 
-    /* ─────────────────────────────────────────────
-       ISSUE MODAL
-    ───────────────────────────────────────────── */
-    #issue-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-      background: rgba(14, 22, 15, 0.65);
-      backdrop-filter: blur(10px);
+    /* ── STAT DIVIDER ─────────────────────────────── */
+    .stat-divider {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent);
+    }
+
+    /* ── SEAL WATERMARK ───────────────────────────── */
+    .seal-watermark {
+      position: absolute;
+      right: -60px; bottom: -60px;
+      width: 420px; height: 420px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,42,0.07);
+      pointer-events: none;
+      opacity: 0.6;
+    }
+    .seal-watermark::before {
+      content: '';
+      position: absolute; inset: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,42,0.09);
+    }
+    .seal-watermark::after {
+      content: '';
+      position: absolute; inset: 60px;
+      border-radius: 50%;
+      border: 1px solid rgba(184,154,42,0.12);
+    }
+
+    /* ── QUICK LINK ACTION CARDS ──────────────────── */
+    .mt-quick-card {
       display: flex;
       align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
+      gap: 1rem;
+      padding: 1.4rem 1.5rem;
+      background: var(--white);
+      border: 1px solid var(--cream-mid);
+      border-left: 3px solid var(--green-main);
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease,
+                  border-left-color 0.2s ease, background 0.2s ease;
+    }
+    .mt-quick-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(28,58,34,0.1);
+      border-left-color: var(--gold-main);
+      background: var(--gold-wash);
+    }
+    .mt-qc-icon-wrap {
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--green-deep), var(--green-main));
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 12px rgba(28,58,34,0.3);
+      transition: transform 0.2s ease;
+    }
+    .mt-quick-card:hover .mt-qc-icon-wrap { transform: scale(1.08); }
+    .mt-qc-icon { width: 20px; height: 20px; color: #fff; stroke-width: 1.75; }
+    .mt-qc-text { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+    .mt-qc-title {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.9rem;
+      color: var(--text-dark); line-height: 1.2;
+    }
+    .mt-qc-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300; font-size: 0.72rem;
+      color: var(--cream-500); letter-spacing: 0.02em;
+    }
+    .mt-qc-arrow {
+      width: 16px; height: 16px;
+      color: var(--cream-400); flex-shrink: 0;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .mt-quick-card:hover .mt-qc-arrow {
+      color: var(--gold-main);
+      transform: translateX(3px);
+    }
+
+    /* ── EVENT CARDS ──────────────────────────────── */
+    .mt-event-card {
+      background: var(--white);
+      border: 1px solid var(--cream-mid);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .mt-event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(28,58,34,0.1);
+    }
+    .mt-event-date-block {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-main));
+      padding: 1.25rem 1.5rem;
+      display: flex; align-items: baseline; gap: 0.5rem;
+    }
+    .mt-event-month {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300; font-size: 0.7rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+    .mt-event-day {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400; font-size: 2.5rem;
+      color: #fff; line-height: 1;
+    }
+    .mt-event-body { padding: 1.25rem 1.5rem 0.75rem; flex: 1; }
+    .mt-event-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500; font-size: 0.6rem;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold-main); margin-bottom: 0.5rem;
+    }
+    .mt-event-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 600; font-size: 1.2rem;
+      color: var(--text-dark); line-height: 1.3; margin-bottom: 0.5rem;
+    }
+    .mt-event-meta {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300; font-size: 0.75rem;
+      color: var(--cream-500); line-height: 1.5;
+    }
+    .mt-event-learn-more {
+      display: flex; align-items: center; gap: 5px;
+      margin: 0.75rem 1.5rem 1.25rem;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600; font-size: 0.68rem;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--green-main); text-decoration: none;
+      width: fit-content;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .mt-event-learn-more:hover {
+      color: var(--gold-main);
+      border-bottom-color: var(--gold-main);
+    }
+
+    /* ── CONTACT MODAL ────────────────────────────── */
+    #modal-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(8,15,10,0.7); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+    }
+    #modal-overlay.open { opacity: 1; pointer-events: auto; }
+    #modal-box {
+      background: var(--white); width: 100%; max-width: 540px;
+      max-height: 90svh; overflow-y: auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.4);
+      transform: translateY(18px);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      border-radius: 16px;
+    }
+    #modal-overlay.open #modal-box { transform: translateY(0); }
+
+    /* ── ISSUE MODAL ──────────────────────────────── */
+    #issue-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(8,15,10,0.7); backdrop-filter: blur(10px);
+      display: flex; align-items: center; justify-content: center; padding: 1.5rem;
+      opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
     }
     #issue-overlay.open { opacity: 1; pointer-events: auto; }
     #issue-box {
-      background: var(--white);
-      width: 100%;
-      max-width: 480px;
-      max-height: 90svh;
-      overflow-y: auto;
+      background: var(--white); width: 100%; max-width: 500px;
+      max-height: 90svh; overflow-y: auto;
+      box-shadow: 0 40px 100px rgba(0,0,0,0.4);
       transform: translateY(18px);
-      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+      border-radius: 16px;
     }
     #issue-overlay.open #issue-box { transform: translateY(0); }
-    #issue-success { display: none; flex-direction: column; align-items: center; text-align: center; padding: 3rem 2rem; }
-    #issue-success.show { display: flex; }
 
-    /* ─────────────────────────────────────────────
-       FOOTER
-    ───────────────────────────────────────────── */
-    #footer {
-      background: var(--ink);
-      padding: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      border-top: 3px solid var(--green);
+    /* Modal shared styles */
+    .modal-header-bar {
+      background: linear-gradient(135deg, #0e1a10, #1C3A22);
+      border-radius: 16px 16px 0 0; padding: 1.75rem 2rem; position: relative;
     }
-    @media (max-width: 640px) {
-      #footer { padding: 2rem 1.5rem; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+    .modal-header-bar::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--gold-main); border-radius: 16px 16px 0 0;
     }
-    .footer-wordmark {
+    .modal-eyebrow {
+      font-family: 'DM Sans'; font-weight: 300; font-size: 0.6rem;
+      letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(184,154,42,0.72); margin-bottom: 4px;
+    }
+    .modal-title {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-weight: 400;
-      font-size: 1rem;
-      color: rgba(255,255,255,0.8);
+      font-size: 1.4rem; font-weight: 600; color: #fff;
     }
-    .footer-address {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 3px;
-      letter-spacing: 0.04em;
+    .modal-close-btn {
+      position: absolute; top: 1.4rem; right: 1.4rem;
+      background: rgba(255,255,255,0.1); border: none; cursor: pointer;
+      width: 34px; height: 34px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.7); font-size: 1rem;
+      font-family: 'DM Sans'; transition: background 0.2s, color 0.2s;
     }
-    .ssl-badge {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 0.45rem 0.9rem;
+    .modal-close-btn:hover { background: rgba(255,255,255,0.2); color: #fff; }
+    .modal-form-body { padding: 2rem; }
+    .form-field-label {
+      display: block; font-family: 'DM Sans'; font-weight: 500;
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-dark); margin-bottom: 0.45rem;
     }
-    .ssl-dot {
-      width: 5px;
-      height: 5px;
-      border-radius: 50%;
-      background: var(--gold);
+    .form-field-input {
+      width: 100%; background: var(--cream-light); border: 1.5px solid var(--cream-border);
+      color: var(--text-dark); font-family: 'DM Sans'; font-weight: 300; font-size: 0.875rem;
+      padding: 0.78rem 1rem; outline: none; border-radius: 6px;
+      transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
     }
-    .ssl-text {
-      font-family: 'Jost', sans-serif;
-      font-weight: 400;
-      font-size: 0.58rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
+    .form-field-input:focus {
+      border-color: var(--gold-main); box-shadow: 0 0 0 3px rgba(184,154,42,0.14);
     }
-    .footer-right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 0.5rem;
+    .form-field-input::placeholder { color: #b0a888; }
+    .form-submit-btn {
+      width: 100%; padding: 1rem; background: var(--green-main); color: #fff;
+      font-family: 'DM Sans'; font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 6px;
+      transition: background 0.22s, transform 0.18s;
+      box-shadow: 0 4px 18px rgba(28,58,34,0.3);
     }
-    @media (max-width: 640px) { .footer-right { align-items: flex-start; } }
-    .footer-byline {
-      font-family: 'Jost', sans-serif;
-      font-weight: 300;
-      font-size: 0.6rem;
-      color: rgba(255,255,255,0.22);
-      letter-spacing: 0.04em;
+    .form-submit-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+    .form-submit-btn:active { transform: translateY(0); }
+    .modal-success {
+      display: none; flex-direction: column; align-items: center;
+      text-align: center; padding: 3rem 2rem;
     }
-    .footer-byline span {
-      color: rgba(184,154,42,0.5);
-      font-weight: 400;
+    .modal-success.show { display: flex; }
+    .modal-success-icon {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-main), var(--green-mid));
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem; box-shadow: 0 8px 24px rgba(28,58,34,0.3);
+      color: #fff; font-size: 1.4rem;
+    }
+    .modal-success-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.35rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem;
+    }
+    .modal-success-body {
+      font-family: 'DM Sans'; font-weight: 300; font-size: 0.875rem;
+      color: var(--text-mid); max-width: 300px; line-height: 1.65;
+    }
+    .modal-success-close {
+      margin-top: 1.5rem; padding: 0.75rem 2rem;
+      background: var(--green-main); color: #fff;
+      font-family: 'DM Sans'; font-weight: 700; font-size: 0.65rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      border: none; cursor: pointer; border-radius: 6px;
     }
 
-    /* ─────────────────────────────────────────────
-       FADE-UP ANIMATION
-    ───────────────────────────────────────────── */
+    /* ── RESPONSIVE GRIDS ─────────────────────────── */
+    @media (max-width: 768px) {
+      #quick-links [style*="grid-template-columns:repeat(3"],
+      #events [style*="grid-template-columns:repeat(3"] {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      #events [style*="grid-template-columns:repeat(3"] {
+        grid-template-columns: repeat(2,1fr) !important;
+      }
+    }
+
+    /* ── FADE-UP ──────────────────────────────────── */
     .fade-up {
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
-                  transform 0.65s cubic-bezier(0.22,1,0.36,1);
+      transform: translateY(28px);
+      transition: opacity 0.72s cubic-bezier(0.22,1,0.36,1),
+                  transform 0.72s cubic-bezier(0.22,1,0.36,1);
     }
-    .fade-up.in { opacity: 1; transform: translateY(0); }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SCROLLBAR ────────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #080f0a; }
+    ::-webkit-scrollbar-thumb { background: #1C3A22; border-radius: 3px; }
   </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════════════════════════════
-     CONTACT MODAL
-═══════════════════════════════════════════════════════════ -->
-<div id="modal-overlay" role="dialog" aria-modal="true">
-  <div id="modal-box">
-    <div class="modal-header">
-      <div class="modal-gold-bar"></div>
-      <p class="eyebrow" style="color:rgba(184,154,42,0.65);margin-bottom:0.4rem;">Direct Line to the Mayor</p>
-      <h2 class="modal-title">Contact Mayor Thurman</h2>
-      <p class="modal-subtitle">Monticello City Hall · Jasper County, Georgia</p>
-      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <form id="contact-form" onsubmit="submitContact(event)">
-        <div class="field-row" style="margin-bottom:1.1rem;">
-          <div class="field-group" style="margin-bottom:0;">
-            <label class="field-label">First Name</label>
-            <input type="text" class="field-input" placeholder="Jane" required />
+  <!-- ============================================================
+       CONTACT MODAL
+  ============================================================ -->
+  <div id="modal-overlay" role="dialog" aria-modal="true">
+    <div id="modal-box">
+      <div class="modal-header-bar">
+        <p class="modal-eyebrow">Direct Line to the Mayor</p>
+        <h2 class="modal-title">Contact Mayor Thurman</h2>
+        <button class="modal-close-btn" onclick="closeModal()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-form-body">
+        <form id="contact-form" onsubmit="submitContact(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="form-field-label">First Name</label>
+              <input type="text" class="form-field-input" placeholder="Jane" required />
+            </div>
+            <div>
+              <label class="form-field-label">Last Name</label>
+              <input type="text" class="form-field-input" placeholder="Doe" required />
+            </div>
           </div>
-          <div class="field-group" style="margin-bottom:0;">
-            <label class="field-label">Last Name</label>
-            <input type="text" class="field-input" placeholder="Doe" required />
+          <div style="margin-bottom:1rem;">
+            <label class="form-field-label">Email Address</label>
+            <input type="email" class="form-field-input" placeholder="jane@email.com" required />
           </div>
+          <div style="margin-bottom:1rem;">
+            <label class="form-field-label" style="display:flex;justify-content:space-between;">
+              <span>Phone</span><span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-mid);">Optional</span>
+            </label>
+            <input type="tel" class="form-field-input" placeholder="(706) 468-0000" />
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label class="form-field-label">Subject</label>
+            <select class="form-field-input" style="cursor:pointer;">
+              <option value="">Select a topic…</option>
+              <option>General Inquiry</option>
+              <option>City Services</option>
+              <option>Infrastructure / Roads</option>
+              <option>Zoning &amp; Permits</option>
+              <option>Public Safety</option>
+              <option>Economic Development</option>
+              <option>Community Events</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <label class="form-field-label">Your Message</label>
+            <textarea class="form-field-input" rows="4" placeholder="Share your thoughts or concerns with Mayor Thurman's office…" style="resize:none;" required></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn">Send Message to Mayor's Office</button>
+          <p style="font-family:'DM Sans';font-weight:300;font-size:0.65rem;color:var(--text-mid);text-align:center;margin-top:0.75rem;">Your information is kept strictly confidential.</p>
+        </form>
+        <div id="modal-success" class="modal-success">
+          <div class="modal-success-icon">✓</div>
+          <h3 class="modal-success-title">Message Delivered</h3>
+          <p class="modal-success-body">Mayor Thurman's office will respond within 1–2 business days. Thank you for reaching out to City Hall.</p>
+          <button class="modal-success-close" onclick="closeModal()">Close</button>
         </div>
-
-        <div class="field-group">
-          <label class="field-label">Email Address</label>
-          <input type="email" class="field-input" placeholder="jane@email.com" required />
-        </div>
-
-        <div class="field-group">
-          <label class="field-label" style="display:flex;justify-content:space-between;">
-            <span>Phone</span>
-            <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--muted);">Optional</span>
-          </label>
-          <input type="tel" class="field-input" placeholder="(706) 468-0000" />
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Subject</label>
-          <select class="field-input" style="cursor:pointer;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7b6e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 0.9rem center;padding-right:2.25rem;">
-            <option value="">Select a topic…</option>
-            <option>General Inquiry</option>
-            <option>City Services</option>
-            <option>Infrastructure / Roads</option>
-            <option>Zoning &amp; Permits</option>
-            <option>Public Safety</option>
-            <option>Economic Development</option>
-            <option>Community Events</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="field-group" style="margin-bottom:1.5rem;">
-          <label class="field-label">Message</label>
-          <textarea class="field-input" rows="4" placeholder="Share your thoughts or concerns with Mayor Thurman's office…" style="resize:none;"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">
-          Send Message to Mayor's Office
-        </button>
-        <p style="font-family:'Jost';font-weight:300;font-size:0.65rem;color:var(--muted);text-align:center;margin-top:0.75rem;">Your information is kept strictly confidential.</p>
-      </form>
-
-      <div id="modal-success">
-        <div class="success-check">✓</div>
-        <h3 class="success-title">Message Delivered</h3>
-        <p class="success-body">Mayor Thurman's office will respond within 1–2 business days. Thank you for reaching out.</p>
-        <button class="success-close" onclick="closeModal()">Close</button>
       </div>
     </div>
   </div>
-</div>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     REPORT AN ISSUE MODAL
-═══════════════════════════════════════════════════════════ -->
-<div id="issue-overlay" role="dialog" aria-modal="true">
-  <div id="issue-box">
-    <div class="modal-header">
-      <div class="modal-gold-bar"></div>
-      <p class="eyebrow" style="color:rgba(184,154,42,0.65);margin-bottom:0.4rem;">Public Works</p>
-      <h2 class="modal-title">Report a City Issue</h2>
-      <p class="modal-subtitle">Monticello, GA · Jasper County</p>
-      <button class="modal-close" onclick="closeIssue()" aria-label="Close">✕</button>
-    </div>
-
-    <div class="modal-body">
-      <form id="issue-form" onsubmit="submitIssue(event)">
-        <div class="field-group">
-          <label class="field-label">Issue Type</label>
-          <select class="field-input" style="cursor:pointer;" required>
-            <option value="">Select issue type…</option>
-            <option>Pothole / Road Damage</option>
-            <option>Broken Street Light</option>
-            <option>Water Leak / Sewer Problem</option>
-            <option>Fallen Tree or Debris</option>
-            <option>Illegal Dumping</option>
-            <option>Park Maintenance</option>
-            <option>Sidewalk Damage</option>
-            <option>Other</option>
-          </select>
-        </div>
-
-        <div class="field-group">
-          <label class="field-label">Location or Address</label>
-          <input type="text" class="field-input" placeholder="e.g., 123 W Washington St, Monticello" required />
-        </div>
-
-        <div class="field-row" style="margin-bottom:1.1rem;">
-          <div class="field-group" style="margin-bottom:0;">
-            <label class="field-label" style="display:flex;justify-content:space-between;"><span>Your Name</span><span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--muted);">Optional</span></label>
-            <input type="text" class="field-input" placeholder="Jane Doe" />
+  <!-- ============================================================
+       REPORT AN ISSUE MODAL
+  ============================================================ -->
+  <div id="issue-overlay" role="dialog" aria-modal="true">
+    <div id="issue-box">
+      <div class="modal-header-bar">
+        <p class="modal-eyebrow">Public Works Department</p>
+        <h2 class="modal-title">Report a City Issue</h2>
+        <button class="modal-close-btn" onclick="closeIssue()" aria-label="Close">✕</button>
+      </div>
+      <div class="modal-form-body">
+        <form id="issue-form" onsubmit="submitIssue(event)">
+          <div style="margin-bottom:1rem;">
+            <label class="form-field-label">Issue Type</label>
+            <select class="form-field-input" style="cursor:pointer;" required>
+              <option value="">Select issue type…</option>
+              <option>Pothole / Road Damage</option>
+              <option>Broken Street Light</option>
+              <option>Water Leak / Sewer Problem</option>
+              <option>Fallen Tree or Debris</option>
+              <option>Illegal Dumping</option>
+              <option>Park Maintenance</option>
+              <option>Sidewalk Damage</option>
+              <option>Other</option>
+            </select>
           </div>
-          <div class="field-group" style="margin-bottom:0;">
-            <label class="field-label" style="display:flex;justify-content:space-between;"><span>Email</span><span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--muted);">Optional</span></label>
-            <input type="email" class="field-input" placeholder="jane@email.com" />
+          <div style="margin-bottom:1rem;">
+            <label class="form-field-label">Location or Address</label>
+            <input type="text" class="form-field-input" placeholder="e.g., 123 W Washington St, Monticello" required />
           </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="form-field-label" style="display:flex;justify-content:space-between;"><span>Your Name</span><span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-mid);">Optional</span></label>
+              <input type="text" class="form-field-input" placeholder="Jane Doe" />
+            </div>
+            <div>
+              <label class="form-field-label" style="display:flex;justify-content:space-between;"><span>Email</span><span style="text-transform:none;letter-spacing:0;font-weight:300;color:var(--text-mid);">Optional</span></label>
+              <input type="email" class="form-field-input" placeholder="jane@email.com" />
+            </div>
+          </div>
+          <div style="margin-bottom:1.5rem;">
+            <label class="form-field-label">Description</label>
+            <textarea class="form-field-input" rows="3" placeholder="Describe the issue in as much detail as possible…" style="resize:none;"></textarea>
+          </div>
+          <button type="submit" class="form-submit-btn">Submit Report</button>
+        </form>
+        <div id="issue-success" class="modal-success">
+          <div class="modal-success-icon">✓</div>
+          <h3 class="modal-success-title">Report Received</h3>
+          <p class="modal-success-body">The City of Monticello Public Works team has been notified and will respond promptly.</p>
+          <button class="modal-success-close" onclick="closeIssue()">Close</button>
         </div>
-
-        <div class="field-group" style="margin-bottom:1.5rem;">
-          <label class="field-label">Description</label>
-          <textarea class="field-input" rows="3" placeholder="Describe the issue in as much detail as possible…" style="resize:none;"></textarea>
-        </div>
-
-        <button type="submit" class="submit-btn">Submit Report</button>
-      </form>
-
-      <div id="issue-success">
-        <div class="success-check">✓</div>
-        <h3 class="success-title">Report Received</h3>
-        <p class="success-body">The City of Monticello Public Works team has been notified and will respond promptly.</p>
-        <button class="success-close" onclick="closeIssue()">Close</button>
       </div>
     </div>
   </div>
-</div>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     IDENTITY BAR / NAV
-═══════════════════════════════════════════════════════════ -->
-<header id="identity-bar">
-  <a href="#" style="text-decoration:none;">
-    <div class="identity-name">City of Monticello &nbsp;|&nbsp; Mayor DeAshley Thurman</div>
-    <div class="identity-sub">Official Digital Office · Jasper County, Georgia</div>
-  </a>
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-5"
+       style="background: transparent;">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-4">
 
-  <nav class="nav-items" aria-label="Primary">
-    <button class="nav-item" onclick="document.getElementById('actions').scrollIntoView({behavior:'smooth'})">Services</button>
-    <button class="nav-item" onclick="document.getElementById('mayors-corner').scrollIntoView({behavior:'smooth'})">Mayor</button>
-    <button class="nav-item" onclick="openModal()">Contact</button>
-    <button class="nav-cta" onclick="openModal()">Contact Mayor</button>
+      <a href="#" class="flex flex-col leading-none flex-shrink-0">
+        <span class="font-display text-lg font-semibold text-white tracking-wide leading-tight">Mayor DeAshley Thurman</span>
+        <span style="font-size:0.6rem; letter-spacing:0.22em;" class="uppercase text-forest-200 mt-0.5">Official Digital Office · Monticello, GA</span>
+      </a>
+
+      <ul class="hidden lg:flex items-center gap-7">
+        <li><a href="#plan"    class="nav-link">Strategic Vision</a></li>
+        <li><a href="#about"   class="nav-link">About</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#contact" class="btn-ghost px-4 py-2 rounded-sm">Get Involved</a></li>
+        <li>
+          <button onclick="openModal()" class="btn-gold px-5 py-2.5 rounded-sm flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.562.562 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" />
+            </svg>
+            Support the Vision
+          </button>
+        </li>
+      </ul>
+
+      <button id="menu-btn" class="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Open menu">
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-6 h-0.5 bg-white"></span>
+        <span class="block w-4 h-0.5 bg-white"></span>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden mt-4 pb-4 border-t border-white/10">
+      <ul class="flex flex-col gap-4 pt-4 px-2">
+        <li><a href="#plan"    class="text-sm text-cream-300 hover:text-white block" onclick="closeMobileMenu()">Strategic Vision</a></li>
+        <li><a href="#about"   class="text-sm text-cream-300 hover:text-white block" onclick="closeMobileMenu()">About</a></li>
+        <li><a href="#contact" class="text-sm text-cream-300 hover:text-white block" onclick="closeMobileMenu()">Contact</a></li>
+        <li><a href="#contact" class="btn-ghost inline-block px-5 py-2.5 rounded-sm" onclick="closeMobileMenu()">Get Involved</a></li>
+        <li><button onclick="openModal();closeMobileMenu();" class="btn-gold inline-flex items-center gap-2 px-5 py-2.5 rounded-sm">★ Contact the Mayor</button></li>
+      </ul>
+    </div>
   </nav>
 
-  <button id="mobile-nav-btn" onclick="toggleNav()" aria-label="Menu">
-    <span></span><span></span><span style="width:14px;"></span>
-  </button>
-</header>
 
-<!-- Mobile drawer -->
-<div id="mobile-drawer" style="background:var(--green);border-bottom:1px solid rgba(255,255,255,0.08);">
-  <button class="nav-item" onclick="document.getElementById('actions').scrollIntoView({behavior:'smooth'});toggleNav()">Services</button>
-  <button class="nav-item" onclick="document.getElementById('mayors-corner').scrollIntoView({behavior:'smooth'});toggleNav()">Mayor's Corner</button>
-  <button class="nav-item" onclick="openModal();toggleNav()">Contact</button>
-  <button class="nav-cta" onclick="openModal();toggleNav()" style="align-self:flex-start;margin-top:0.25rem;">Contact Mayor Thurman</button>
-</div>
+  <!-- ============================================================
+       HERO
+  ============================================================ -->
+  <section id="hero" class="noise relative min-h-screen flex items-center pt-28 pb-20 px-6">
 
+    <div class="geo-ring" style="width:700px;height:700px;top:-200px;right:-200px;animation-delay:0s;"></div>
+    <div class="geo-ring" style="width:420px;height:420px;top:-80px;right:-80px;animation-delay:2.5s;border-color:rgba(184,154,42,0.07);"></div>
+    <div class="geo-ring" style="width:220px;height:220px;bottom:80px;left:-60px;animation-delay:5s;"></div>
+    <div class="absolute inset-0 pointer-events-none z-0"
+         style="background: linear-gradient(115deg, transparent 55%, rgba(28,58,34,0.12) 55%, transparent 65%);"></div>
+    <div class="seal-watermark hidden md:block"></div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     HERO
-═══════════════════════════════════════════════════════════ -->
-<section>
-  <div id="hero">
-    <!-- Left: Main statement -->
-    <div>
-      <div class="excellence-badge fade-up" data-delay="0">
-        <div class="excellence-badge-dot"></div>
-        <span class="excellence-badge-text">Georgia City of Excellence · GMA Certified</span>
+    <div class="relative z-10 max-w-6xl mx-auto w-full">
+      <div class="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+        <!-- Text -->
+        <div class="order-2 md:order-1">
+
+          <div class="mb-7 fade-up" style="transition-delay:0.05s">
+            <span class="official-badge">
+              <span class="dot"></span>
+              Georgia City of Excellence · Official Digital Office
+            </span>
+          </div>
+
+          <h1 class="font-display text-4xl sm:text-5xl lg:text-[3.4rem] font-light text-white leading-[1.08] mb-4 fade-up"
+              style="transition-delay:0.15s">
+            The Official Digital<br/>
+            Office of Mayor<br/>
+            <em class="font-bold not-italic"
+                style="color:var(--gold-main); text-shadow: 0 0 40px rgba(184,154,42,0.3);">
+              DeAshley Thurman
+            </em>
+          </h1>
+
+          <p class="font-display text-xl sm:text-2xl font-light italic mb-7 fade-up"
+             style="transition-delay:0.22s; color: rgba(238,220,154,0.85);">
+            Modernizing Resident Access &amp; Transparency.
+          </p>
+
+          <p class="text-sm font-light leading-relaxed max-w-md mb-10 fade-up"
+             style="transition-delay:0.28s; color: rgba(210,218,212,0.78);">
+            Mayor Thurman is committed to transparent leadership, community investment, and making city services modern and accessible for every resident of Monticello — Jasper County's proud seat of government since 1809.
+          </p>
+
+          <div class="fade-up" style="transition-delay:0.35s">
+            <div id="hero-cta-row">
+              <button onclick="openModal()" class="btn-green hero-cta-btn rounded-sm">
+                Contact Mayor Thurman
+              </button>
+              <button onclick="openIssue()" class="btn-gold hero-cta-btn rounded-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:16px;height:16px;flex-shrink:0;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                </svg>
+                Report a City Issue
+              </button>
+              <a href="#about" class="btn-ghost hero-cta-btn rounded-sm">
+                Meet the Mayor
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-12 pt-8 fade-up"
+               style="transition-delay:0.45s; border-top: 1px solid rgba(255,255,255,0.08);">
+            <div class="flex items-center gap-8">
+              <div>
+                <div class="font-display text-3xl font-light text-white">1809</div>
+                <div class="text-xs tracking-widest uppercase mt-0.5" style="color:rgba(184,154,42,0.5);">Est.</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div>
+                <div class="font-display text-3xl font-light text-white">24/7</div>
+                <div class="text-xs tracking-widest uppercase mt-0.5" style="color:rgba(184,154,42,0.5);">City Access</div>
+              </div>
+              <div class="stat-divider"></div>
+              <div>
+                <div class="font-display text-3xl font-light text-white">GMA</div>
+                <div class="text-xs tracking-widest uppercase mt-0.5" style="color:rgba(184,154,42,0.5);">City of Excellence</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo -->
+        <div class="order-1 md:order-2 flex justify-center md:justify-end fade-up" style="transition-delay:0.2s">
+          <div class="photo-frame rounded-2xl w-72 h-96 sm:w-80 sm:h-[460px] flex flex-col items-center justify-center relative overflow-hidden">
+            <!-- ── REPLACE with actual photo:
+                 <img src="images/mayor-deashley-thurman.jpg" alt="Mayor DeAshley Thurman"
+                      class="w-full h-full object-cover object-top" />
+            ── -->
+            <div class="flex flex-col items-center gap-3" style="opacity:0.3;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" style="color:rgba(184,154,42,0.7);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              <span style="color:rgba(184,154,42,0.6); font-size:0.65rem; letter-spacing:0.2em;" class="uppercase">Official Photo</span>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-28"
+                 style="background: linear-gradient(to top, rgba(8,15,10,0.92), transparent);"></div>
+            <div class="absolute bottom-5 left-0 right-0 text-center px-4">
+              <div class="font-display text-white text-base font-light">DeAshley Thurman</div>
+              <div style="font-size:0.6rem; letter-spacing:0.2em; color:rgba(184,154,42,0.65);" class="uppercase mt-1">Mayor · Monticello, Georgia</div>
+            </div>
+          </div>
+        </div>
+
       </div>
+    </div>
 
-      <h1 class="hero-headline fade-up" data-delay="80">
-        A Modern Digital<br/>
-        Front Door for<br/>
-        <strong>Monticello Residents.</strong>
-      </h1>
+    <div class="absolute bottom-0 left-0 right-0 h-20 z-10"
+         style="background: linear-gradient(to top, var(--white), transparent);"></div>
+  </section>
 
-      <p class="hero-sub fade-up" data-delay="160">
-        Secure city services, direct access to Mayor Thurman, and complete government transparency — available on every device, at any hour.
-      </p>
 
-      <div class="fade-up" data-delay="240" style="margin-top:2rem;display:flex;gap:0.85rem;flex-wrap:wrap;">
-        <button onclick="openModal()" style="background:var(--green);color:#fff;font-family:'Jost',sans-serif;font-weight:600;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.9rem 1.75rem;border:none;cursor:pointer;transition:background 0.2s,transform 0.18s;" onmouseover="this.style.background='#2A5234'" onmouseout="this.style.background='var(--green)'" onmousedown="this.style.transform='translateY(0)'" onmouseup="this.style.transform='translateY(-1px)'">
-          Contact the Mayor
+  <!-- ============================================================
+       QUICK LINKS GRID
+  ============================================================ -->
+  <section id="quick-links" style="background:var(--white); border-bottom:1px solid var(--cream-mid); padding:3.5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
+
+      <p style="font-size:0.65rem; letter-spacing:0.28em; text-transform:uppercase; font-weight:500; color:var(--green-main); text-align:center; margin-bottom:2rem; font-family:'DM Sans',sans-serif;">City Services</p>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem;">
+
+        <!-- Pay Utilities -->
+        <a href="#" target="_blank" rel="noopener" class="mt-quick-card fade-up" style="transition-delay:0.05s">
+          <div class="mt-qc-icon-wrap"><i data-lucide="credit-card" class="mt-qc-icon"></i></div>
+          <div class="mt-qc-text">
+            <span class="mt-qc-title">Pay Utilities</span>
+            <span class="mt-qc-sub">Online payment portal</span>
+          </div>
+          <i data-lucide="arrow-right" class="mt-qc-arrow"></i>
+        </a>
+
+        <!-- Community Calendar -->
+        <a href="#events" class="mt-quick-card fade-up" style="transition-delay:0.12s">
+          <div class="mt-qc-icon-wrap"><i data-lucide="calendar-days" class="mt-qc-icon"></i></div>
+          <div class="mt-qc-text">
+            <span class="mt-qc-title">Community Calendar</span>
+            <span class="mt-qc-sub">Events, meetings &amp; more</span>
+          </div>
+          <i data-lucide="arrow-right" class="mt-qc-arrow"></i>
+        </a>
+
+        <!-- Contact City Hall -->
+        <button onclick="openModal()" class="mt-quick-card fade-up" style="transition-delay:0.19s;text-align:left;cursor:pointer;border:none;">
+          <div class="mt-qc-icon-wrap"><i data-lucide="landmark" class="mt-qc-icon"></i></div>
+          <div class="mt-qc-text">
+            <span class="mt-qc-title">Contact City Hall</span>
+            <span class="mt-qc-sub">Send a message to the Mayor</span>
+          </div>
+          <i data-lucide="arrow-right" class="mt-qc-arrow"></i>
         </button>
-        <button onclick="document.getElementById('actions').scrollIntoView({behavior:'smooth'})" style="background:transparent;color:var(--green);font-family:'Jost',sans-serif;font-weight:500;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.9rem 1.75rem;border:1px solid var(--rule);cursor:pointer;transition:border-color 0.2s,color 0.2s;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--rule)'">
-          All City Services →
-        </button>
-      </div>
-    </div>
-
-    <div class="hero-divider"></div>
-
-    <!-- Right: At-a-glance stats -->
-    <div class="fade-up" data-delay="200">
-      <div style="display:flex;flex-direction:column;gap:2rem;">
-
-        <div style="padding-bottom:2rem;border-bottom:1px solid var(--rule);">
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:var(--green);line-height:1;">Est. 1809</div>
-          <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:4px;">Seat of Jasper County, Georgia</div>
-        </div>
-
-        <div style="padding-bottom:2rem;border-bottom:1px solid var(--rule);">
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:var(--green);line-height:1;">24/7</div>
-          <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:4px;">Online Access to City Services</div>
-        </div>
-
-        <div>
-          <div style="font-family:'Cormorant Garamond',Georgia,serif;font-size:2.8rem;font-weight:300;color:var(--green);line-height:1;">SSL</div>
-          <div style="font-family:'Jost',sans-serif;font-weight:300;font-size:0.7rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);margin-top:4px;">Encrypted Secure Infrastructure</div>
-        </div>
 
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     THE BIG FOUR — POWER ACTIONS
-═══════════════════════════════════════════════════════════ -->
-<section id="actions">
-  <div class="actions-inner">
-    <div class="actions-header fade-up" data-delay="0">
-      <div>
-        <p class="eyebrow" style="margin-bottom:0.5rem;">City Services</p>
-        <h2 class="actions-title">Four direct lines<br/><em style="font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:300;">into City Hall.</em></h2>
-      </div>
-      <p style="font-family:'Jost';font-weight:300;font-size:0.82rem;color:var(--muted);max-width:280px;line-height:1.7;text-align:right;">Every resident service, accessible in two taps. No directories. No dead ends.</p>
-    </div>
+  <!-- ============================================================
+       EVENTS SECTION
+  ============================================================ -->
+  <section id="events" style="background:var(--cream-light); padding:5rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
 
-    <div class="actions-grid fade-up" data-delay="80">
-
-      <!-- 01: Direct Line to Mayor — primary card -->
-      <button class="power-card primary-card" onclick="openModal()" type="button">
-        <span class="pc-number">01</span>
-        <div class="pc-icon-line"></div>
-        <span class="pc-title">Direct Line<br/>to the Mayor</span>
-        <span class="pc-desc">Send a secure, direct message to Mayor DeAshley Thurman's office. Responses within 1–2 business days.</span>
-        <span class="pc-cta">Open Contact Form <span class="pc-cta-arrow">→</span></span>
-      </button>
-
-      <!-- 02: Report a City Issue -->
-      <button class="power-card" onclick="openIssue()" type="button">
-        <span class="pc-number">02</span>
-        <div class="pc-icon-line"></div>
-        <span class="pc-title">Report a<br/>City Issue</span>
-        <span class="pc-desc">Potholes, broken street lights, water leaks, and other public works concerns — reported directly to the city.</span>
-        <span class="pc-cta">File a Report <span class="pc-cta-arrow">→</span></span>
-      </button>
-
-      <!-- 03: Resident Services -->
-      <button class="power-card" type="button">
-        <span class="pc-number">03</span>
-        <div class="pc-icon-line"></div>
-        <span class="pc-title">Resident Services<br/>&amp; Payments</span>
-        <span class="pc-desc">Pay utility bills, apply for permits, access zoning information, and manage your city services — all online.</span>
-        <span class="pc-cta">Access Portal <span class="pc-cta-arrow">→</span></span>
-      </button>
-
-      <!-- 04: Public Transparency -->
-      <button class="power-card" type="button">
-        <span class="pc-number">04</span>
-        <div class="pc-icon-line"></div>
-        <span class="pc-title">Public Transparency<br/>&amp; Records</span>
-        <span class="pc-desc">Council meeting minutes, city budgets, ordinances, and public records — open and accessible to every Monticello resident.</span>
-        <span class="pc-cta">View Records <span class="pc-cta-arrow">→</span></span>
-      </button>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══════════════════════════════════════════════════════════
-     MAYOR'S CORNER
-═══════════════════════════════════════════════════════════ -->
-<section>
-  <div id="mayors-corner">
-
-    <!-- Mayor quote -->
-    <div class="fade-up" data-delay="0">
-      <p class="eyebrow" style="margin-bottom:1.25rem;">From the Mayor's Office</p>
-      <blockquote class="corner-quote">
-        "Our residents deserve a government that is as modern and accessible as the community we are building together."
-      </blockquote>
-      <p class="corner-attribution">— Mayor DeAshley Thurman, City of Monticello</p>
-      <button onclick="openModal()" style="margin-top:1.75rem;display:inline-flex;align-items:center;gap:6px;font-family:'Jost',sans-serif;font-weight:600;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--green);background:none;border:none;cursor:pointer;border-bottom:1px solid var(--rule);padding-bottom:2px;" onmouseover="this.style.borderColor='var(--green)'" onmouseout="this.style.borderColor='var(--rule)'">
-        Contact Mayor Thurman →
-      </button>
-    </div>
-
-    <div class="corner-divider"></div>
-
-    <!-- City of Excellence -->
-    <div class="fade-up" data-delay="120">
-      <p class="eyebrow" style="margin-bottom:1.5rem;">City Recognition</p>
-
-      <div class="excellence-strip" style="margin-bottom:2rem;">
-        <div class="excellence-icon-box">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(184,154,42,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/>
-          </svg>
-        </div>
-        <div>
-          <h3 class="excellence-heading">Georgia City of Excellence</h3>
-          <p class="excellence-body">Monticello is a certified GMA City of Excellence — Jasper County's seat of government and one of Georgia's most distinguished small cities since 1809.</p>
-        </div>
+      <div class="text-center fade-up" style="margin-bottom:3rem;">
+        <p class="section-label mb-3" style="color:var(--green-main);">What's Happening</p>
+        <span class="gold-rule mb-5 block"></span>
+        <h2 class="font-display" style="font-size:clamp(2rem,4vw,2.75rem); font-weight:300; color:var(--text-dark); line-height:1.15;">
+          Upcoming in <em class="font-semibold" style="color:var(--green-main);">Monticello</em>
+        </h2>
       </div>
 
-      <!-- Newsletter signup -->
-      <div style="border-top:1px solid var(--rule);padding-top:1.75rem;">
-        <p style="font-family:'Jost';font-weight:400;font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:0.75rem;">Mayor's Newsletter</p>
-        <p style="font-family:'Jost';font-weight:300;font-size:0.82rem;color:var(--muted);margin-bottom:1rem;line-height:1.65;">Stay informed about city news, council agendas, and community updates from Mayor Thurman.</p>
-        <div style="display:flex;gap:0;">
-          <input type="email" placeholder="your@email.com" style="flex:1;background:var(--off-white);border:1px solid var(--rule);border-right:none;color:var(--ink);font-family:'Jost';font-weight:300;font-size:0.85rem;padding:0.7rem 0.9rem;outline:none;min-width:0;" onfocus="this.style.borderColor='var(--green)';this.style.borderRight='none'" onblur="this.style.borderColor='var(--rule)'"/>
-          <button style="background:var(--green);color:#fff;font-family:'Jost';font-weight:600;font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;padding:0.7rem 1.1rem;border:none;cursor:pointer;flex-shrink:0;transition:background 0.2s;" onmouseover="this.style.background='#2A5234'" onmouseout="this.style.background='var(--green)'">Subscribe</button>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem;">
+
+        <!-- ── EDIT: Replace with real Monticello event details ── -->
+
+        <div class="mt-event-card fade-up" style="transition-delay:0.08s">
+          <div class="mt-event-date-block">
+            <span class="mt-event-month">Jul</span>
+            <span class="mt-event-day">08</span>
+          </div>
+          <div class="mt-event-body">
+            <p class="mt-event-tag">City Council</p>
+            <h3 class="mt-event-title">Monticello City Council Regular Meeting</h3>
+            <p class="mt-event-meta">6:00 PM · Monticello City Hall</p>
+          </div>
+          <a href="#" class="mt-event-learn-more">Learn More <i data-lucide="chevron-right" style="width:13px;height:13px;display:inline;"></i></a>
         </div>
-        <p style="font-family:'Jost';font-weight:300;font-size:0.62rem;color:rgba(107,123,110,0.7);margin-top:0.5rem;">No spam. Unsubscribe at any time.</p>
+
+        <div class="mt-event-card fade-up" style="transition-delay:0.16s">
+          <div class="mt-event-date-block">
+            <span class="mt-event-month">Jul</span>
+            <span class="mt-event-day">20</span>
+          </div>
+          <div class="mt-event-body">
+            <p class="mt-event-tag">Community</p>
+            <h3 class="mt-event-title">Jasper County Farmers Market</h3>
+            <p class="mt-event-meta">8:00 AM · Downtown Monticello Square</p>
+          </div>
+          <a href="#" class="mt-event-learn-more">Learn More <i data-lucide="chevron-right" style="width:13px;height:13px;display:inline;"></i></a>
+        </div>
+
+        <div class="mt-event-card fade-up" style="transition-delay:0.24s">
+          <div class="mt-event-date-block">
+            <span class="mt-event-month">Aug</span>
+            <span class="mt-event-day">05</span>
+          </div>
+          <div class="mt-event-body">
+            <p class="mt-event-tag">Public Works</p>
+            <h3 class="mt-event-title">Infrastructure Town Hall Meeting</h3>
+            <p class="mt-event-meta">6:30 PM · Jasper County Community Center</p>
+          </div>
+          <a href="#" class="mt-event-learn-more">Learn More <i data-lucide="chevron-right" style="width:13px;height:13px;display:inline;"></i></a>
+        </div>
+
       </div>
     </div>
-
-  </div>
-</section>
+  </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════════ -->
-<footer id="footer">
-  <div>
-    <div class="footer-wordmark">City of Monticello · Mayor DeAshley Thurman</div>
-    <div class="footer-address">123 W Washington St, Monticello, GA 31064 · (706) 468-6946</div>
-  </div>
+  <!-- ============================================================
+       STRATEGIC VISION
+  ============================================================ -->
+  <section id="plan" style="background:var(--white); padding:6rem 1.5rem;">
+    <div class="max-w-6xl mx-auto">
 
-  <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
-    <div class="ssl-badge">
-      <div class="ssl-dot"></div>
-      <span class="ssl-text">SSL Secure Infrastructure</span>
+      <div class="text-center mb-16 fade-up">
+        <p class="section-label mb-3" style="color:var(--green-main);">A Clear Agenda for Monticello</p>
+        <span class="gold-rule mb-5 block"></span>
+        <h2 class="font-display text-4xl sm:text-5xl font-light mb-5" style="color:var(--text-dark);">
+          The <em class="font-semibold" style="color:var(--green-main);">Strategic Vision</em>
+        </h2>
+        <p class="text-sm font-light leading-relaxed max-w-xl mx-auto" style="color:var(--cream-500);">
+          Three focused pillars — each one honoring Monticello's legacy as a Georgia City of Excellence while building a stronger, more connected, and more accessible city for every resident of Jasper County.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+        <div class="plan-card fade-up" style="transition-delay:0.1s">
+          <div class="icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2" style="color:var(--text-dark);">Heritage &amp; Community</h3>
+          <p class="text-xs tracking-widest uppercase mb-4 font-medium" style="color:var(--gold-main); letter-spacing:0.15em;">Pillar One</p>
+          <p class="text-sm leading-relaxed font-light" style="color:var(--cream-500);">
+            As Jasper County's seat of government since 1809 and a certified Georgia City of Excellence, Monticello carries a proud legacy. Mayor Thurman is committed to preserving this heritage while investing in the parks, events, and public spaces that bring the community together.
+          </p>
+        </div>
+
+        <div class="plan-card fade-up" style="transition-delay:0.2s">
+          <div class="icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 01.75-.75h3a.75.75 0 01.75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349m-16.5 11.65V9.35m0 0a3.001 3.001 0 003.75-.615A2.993 2.993 0 009.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 002.25 1.016c.896 0 1.7-.393 2.25-1.015a3.001 3.001 0 003.75.614m-16.5 0a3.004 3.004 0 01-.621-4.72L4.318 3.44A1.5 1.5 0 015.378 3h13.243a1.5 1.5 0 011.06.44l1.19 1.189a3 3 0 01-.621 4.72m-13.5 8.65h3.75a.75.75 0 00.75-.75V13.5a.75.75 0 00-.75-.75H6.75a.75.75 0 00-.75.75v3.75c0 .415.336.75.75.75z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2" style="color:var(--text-dark);">Economic Development</h3>
+          <p class="text-xs tracking-widest uppercase mb-4 font-medium" style="color:var(--gold-main); letter-spacing:0.15em;">Pillar Two</p>
+          <p class="text-sm leading-relaxed font-light" style="color:var(--cream-500);">
+            Building a stronger Monticello means creating conditions where downtown businesses can grow and new employers want to invest in Jasper County. Mayor Thurman is dedicated to reducing barriers, supporting local entrepreneurs, and positioning Monticello for sustainable growth.
+          </p>
+        </div>
+
+        <div class="plan-card fade-up" style="transition-delay:0.3s">
+          <div class="icon-wrap">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+            </svg>
+          </div>
+          <h3 class="font-display text-2xl font-semibold mb-2" style="color:var(--text-dark);">Transparent Governance</h3>
+          <p class="text-xs tracking-widest uppercase mb-4 font-medium" style="color:var(--gold-main); letter-spacing:0.15em;">Pillar Three</p>
+          <p class="text-sm leading-relaxed font-light" style="color:var(--cream-500);">
+            Every Monticello resident deserves to know how their city is run. Mayor Thurman is committed to open records, accessible council minutes, clear budget reporting, and a digital office that makes city government genuinely easy to navigate for everyone.
+          </p>
+        </div>
+
+      </div>
     </div>
-    <div class="ssl-badge">
-      <div class="ssl-dot"></div>
-      <span class="ssl-text">Mobile Optimized</span>
+  </section>
+
+
+  <!-- ============================================================
+       ABOUT THE MAYOR
+  ============================================================ -->
+  <section id="about" class="py-24 px-6 relative overflow-hidden noise">
+
+    <div class="absolute top-0 right-0 pointer-events-none"
+         style="width:500px;height:500px;background:radial-gradient(ellipse, rgba(184,154,42,0.08) 0%, transparent 70%);transform:translate(30%,-30%);"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-12 gap-12 items-start">
+
+        <!-- Portrait + name plate -->
+        <div class="md:col-span-4 fade-up">
+          <div class="photo-frame rounded-2xl w-full aspect-[3/4] flex flex-col items-center justify-center relative overflow-hidden mb-6">
+            <!-- ── REPLACE with:
+                 <img src="images/mayor-deashley-thurman-about.jpg" alt="Mayor DeAshley Thurman"
+                      class="w-full h-full object-cover object-top" />
+            ── -->
+            <div class="flex flex-col items-center gap-3" style="opacity:0.3;">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16" style="color:rgba(184,154,42,0.7);" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="0.8">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              <span style="color:rgba(184,154,42,0.6);font-size:0.65rem;letter-spacing:0.2em;" class="uppercase">Official Photo</span>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-28"
+                 style="background: linear-gradient(to top, rgba(8,15,10,0.92), transparent);"></div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:12px;" class="p-5 backdrop-blur-sm">
+            <div class="bio-accent-line mb-3"></div>
+            <p style="font-size:0.65rem;letter-spacing:0.25em;color:rgba(184,154,42,0.62);" class="uppercase mb-1">Mayor · Monticello, Georgia</p>
+            <h3 class="font-display text-2xl text-white font-semibold">DeAshley Thurman</h3>
+            <div class="flex flex-wrap gap-2 mt-4">
+              <span style="font-size:0.62rem;letter-spacing:0.12em;color:rgba(184,154,42,0.65);border:1px solid rgba(184,154,42,0.2);border-radius:100px;padding:3px 10px;" class="uppercase">Monticello Native</span>
+              <span style="font-size:0.62rem;letter-spacing:0.12em;color:rgba(190,215,195,0.62);border:1px solid rgba(190,215,195,0.18);border-radius:100px;padding:3px 10px;" class="uppercase">Public Servant</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bio text -->
+        <div class="md:col-span-8 fade-up" style="transition-delay:0.15s">
+          <p class="section-label mb-4" style="color:rgba(184,154,42,0.65);">About Mayor Thurman</p>
+          <h2 class="font-display text-4xl sm:text-5xl text-white font-light leading-tight mb-8">
+            Rooted in Monticello.<br/>
+            <em class="font-bold" style="color:var(--gold-main);">Committed to Its Future.</em>
+          </h2>
+
+          <!-- ── EDIT: Replace with Mayor Thurman's actual biography ── -->
+          <div class="space-y-5 text-sm font-light leading-relaxed" style="color:rgba(210,218,212,0.8);">
+            <p>
+              Mayor DeAshley Thurman leads the City of Monticello, Georgia with a deep sense of responsibility to the community she serves. As Jasper County's proud seat of government — a Georgia City of Excellence — Monticello deserves leadership that matches its legacy, and Mayor Thurman brings exactly that.
+            </p>
+            <p>
+              With a background in [insert field — e.g., public administration, education, community development], Mayor Thurman is committed to the simple belief that local government should work visibly and honestly for every resident. Her approach to city leadership is defined by accessibility, transparency, and genuine responsiveness.
+            </p>
+            <p>
+              From modernizing city services and investing in Monticello's downtown economy to ensuring every family has a safe, connected neighborhood, Mayor Thurman's vision is both ambitious and grounded — built on the foundation of a community that has been doing extraordinary things since 1809.
+            </p>
+            <p>
+              She believes that the best city government is one that residents barely notice — because it simply works, every time, for everyone in Jasper County.
+            </p>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <button onclick="openModal()" class="btn-green px-6 py-3 rounded-sm">Contact the Mayor</button>
+            <button onclick="openModal()" class="btn-gold px-6 py-3 rounded-sm flex items-center gap-2">★ Support the Vision</button>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-
-  <div class="footer-right">
-    <div class="footer-byline">Official Prototype Designed by <span>Matthew Janci</span></div>
-    <div class="footer-byline">City of Monticello, Georgia · © 2025</div>
-  </div>
-</footer>
+  </section>
 
 
-<!-- ═══════════════════════════════════════════════════════════
-     JAVASCRIPT
-═══════════════════════════════════════════════════════════ -->
-<script>
-  /* ── Nav scroll shadow ── */
-  const bar = document.getElementById('identity-bar');
-  window.addEventListener('scroll', () => {
-    bar.classList.toggle('scrolled', window.scrollY > 10);
-  }, { passive: true });
+  <!-- ============================================================
+       CONTACT
+  ============================================================ -->
+  <section id="contact" style="background:var(--cream-light); padding:6rem 1.5rem;">
+    <div class="max-w-2xl mx-auto">
 
-  /* ── Mobile nav toggle ── */
-  function toggleNav() {
-    const d = document.getElementById('mobile-drawer');
-    d.style.display = d.style.display === 'flex' ? 'none' : 'flex';
-  }
+      <div class="text-center mb-12 fade-up">
+        <p class="section-label mb-3" style="color:var(--green-main);">We Are Listening</p>
+        <span class="gold-rule mb-5 block"></span>
+        <h2 class="font-display text-4xl sm:text-5xl font-light mb-5" style="color:var(--text-dark);">
+          Get in <em class="font-semibold" style="color:var(--green-main);">Touch</em>
+        </h2>
+        <p class="text-sm font-light leading-relaxed" style="color:var(--cream-500);">
+          Whether you have a question, a concern, or an idea for Monticello — Mayor Thurman's office is always ready to hear from you.
+        </p>
+      </div>
 
-  /* ── Contact modal ── */
-  function openModal() {
-    document.getElementById('modal-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('modal-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      const f = document.getElementById('contact-form');
-      const s = document.getElementById('modal-success');
-      f.style.display = 'block';
-      s.classList.remove('show');
-      f.reset();
-    }, 350);
-  }
-  function submitContact(e) {
-    e.preventDefault();
-    document.getElementById('contact-form').style.display = 'none';
-    document.getElementById('modal-success').classList.add('show');
-  }
-  document.getElementById('modal-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeModal();
-  });
+      <!-- Inline contact form (same fields as modal, styled for the page) -->
+      <div class="fade-up" style="transition-delay:0.1s;background:var(--white);border-radius:16px;padding:2.5rem;box-shadow:0 8px 40px rgba(28,58,34,0.08);border:1px solid var(--cream-mid);">
+        <form id="page-contact-form" onsubmit="submitPageContact(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label class="form-field-label" style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">First Name</label>
+              <input type="text" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Jane" required />
+            </div>
+            <div>
+              <label class="form-field-label" style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">Last Name</label>
+              <input type="text" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Doe" required />
+            </div>
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">Email Address</label>
+            <input type="email" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="jane@email.com" required />
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">
+              Phone <span style="text-transform:none;letter-spacing:0;font-weight:300;font-size:0.75rem;color:var(--cream-500);">(optional)</span>
+            </label>
+            <input type="tel" class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="(706) 468-0000" />
+          </div>
+          <div style="margin-bottom:1rem;">
+            <label style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">Subject</label>
+            <select class="form-input w-full rounded-lg px-4 py-3 text-sm" style="cursor:pointer;appearance:none;">
+              <option value="">Select a topic…</option>
+              <option>General Inquiry</option>
+              <option>City Services</option>
+              <option>Infrastructure / Roads</option>
+              <option>Zoning &amp; Permits</option>
+              <option>Public Safety</option>
+              <option>Economic Development</option>
+              <option>Community Events</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div style="margin-bottom:1.75rem;">
+            <label style="display:block;font-family:'DM Sans';font-weight:500;font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--text-dark);margin-bottom:0.45rem;">Your Message</label>
+            <textarea class="form-input w-full rounded-lg px-4 py-3 text-sm" rows="5" placeholder="Share your thoughts, concerns, or ideas for Monticello…" style="resize:none;" required></textarea>
+          </div>
+          <button type="submit" class="btn-green w-full py-4 rounded-lg text-sm">
+            Send Message to Mayor's Office
+          </button>
+          <p style="font-family:'DM Sans';font-weight:300;font-size:0.65rem;color:var(--cream-500);text-align:center;margin-top:0.85rem;">Your information is kept confidential and used solely to respond to your inquiry.</p>
+        </form>
 
-  /* ── Issue modal ── */
-  function openIssue() {
-    document.getElementById('issue-overlay').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeIssue() {
-    document.getElementById('issue-overlay').classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(() => {
-      const f = document.getElementById('issue-form');
-      const s = document.getElementById('issue-success');
-      f.style.display = 'block';
-      s.classList.remove('show');
-      f.reset();
-    }, 350);
-  }
-  function submitIssue(e) {
-    e.preventDefault();
-    document.getElementById('issue-form').style.display = 'none';
-    document.getElementById('issue-success').classList.add('show');
-  }
-  document.getElementById('issue-overlay').addEventListener('click', function(e) {
-    if (e.target === this) closeIssue();
-  });
+        <!-- Page form success state -->
+        <div id="page-contact-success" style="display:none;flex-direction:column;align-items:center;text-align:center;padding:2rem 0;">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--green-main),var(--green-mid));display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;color:#fff;font-size:1.4rem;">✓</div>
+          <h3 class="font-display text-2xl" style="color:var(--text-dark);margin-bottom:0.5rem;">Message Delivered</h3>
+          <p style="font-family:'DM Sans';font-weight:300;font-size:0.875rem;color:var(--cream-500);max-width:300px;line-height:1.65;">Mayor Thurman's office will respond within 1–2 business days. Thank you for reaching out.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  /* ── Keyboard close ── */
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { closeModal(); closeIssue(); }
-  });
 
-  /* ── Staggered fade-up on scroll ── */
-  const fadeEls = document.querySelectorAll('.fade-up');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const delay = parseInt(entry.target.dataset.delay || 0);
-        setTimeout(() => entry.target.classList.add('in'), delay);
-        obs.unobserve(entry.target);
-      }
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <footer class="py-12 px-6">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 mb-8"
+           style="border-bottom:1px solid rgba(255,255,255,0.07);">
+        <div class="text-center md:text-left">
+          <span class="font-display text-xl text-white font-semibold tracking-wide">Mayor DeAshley Thurman</span>
+          <p class="text-xs tracking-wider mt-1" style="color:rgba(184,154,42,0.38);">Official Digital Office · Monticello, Georgia</p>
+          <p class="text-xs mt-0.5" style="color:rgba(255,255,255,0.22);letter-spacing:0.06em;">123 W Washington St, Monticello, GA 31064 · (706) 468-6946</p>
+        </div>
+
+        <ul class="flex flex-wrap items-center justify-center gap-6">
+          <li><a href="#plan"    class="nav-link" style="font-size:0.7rem;">Strategic Vision</a></li>
+          <li><a href="#about"   class="nav-link" style="font-size:0.7rem;">About</a></li>
+          <li><a href="#contact" class="nav-link" style="font-size:0.7rem;">Contact</a></li>
+          <li>
+            <button onclick="openModal()" class="text-xs uppercase tracking-widest font-semibold"
+               style="color:var(--gold-main);background:none;border:none;cursor:pointer;transition:color 0.2s;"
+               onmouseover="this.style.color='var(--gold-light)'"
+               onmouseout="this.style.color='var(--gold-main)'">★ Support the Vision</button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- SSL badges -->
+      <div class="flex justify-center gap-4 mb-6 flex-wrap">
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.45rem 0.9rem;">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--gold-main);"></div>
+          <span style="font-family:'DM Sans';font-weight:400;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38);">SSL Secure Infrastructure</span>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.45rem 0.9rem;">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--gold-main);"></div>
+          <span style="font-family:'DM Sans';font-weight:400;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38);">GMA City of Excellence</span>
+        </div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:0.45rem 0.9rem;">
+          <div style="width:5px;height:5px;border-radius:50%;background:var(--gold-main);"></div>
+          <span style="font-family:'DM Sans';font-weight:400;font-size:0.58rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.38);">Mobile Optimized</span>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <p class="text-xs leading-relaxed font-light" style="color:rgba(160,170,150,0.45);">
+          Official Prototype Designed by <span style="color:rgba(184,154,42,0.5);font-weight:500;">Matthew Janci</span> &nbsp;|&nbsp; City of Monticello, Georgia &nbsp;|&nbsp; &copy; 2025
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+
+  <!-- ============================================================
+       JAVASCRIPT
+  ============================================================ -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"
+          onload="lucide.createIcons()"></script>
+
+  <script>
+    /* ── Nav scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    /* ── Mobile menu ── */
+    const menuBtn    = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    function closeMobileMenu() { mobileMenu.classList.add('hidden'); }
+
+    /* ── Contact modal ── */
+    function openModal() {
+      document.getElementById('modal-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById('contact-form').style.display = 'block';
+        document.getElementById('modal-success').classList.remove('show');
+        document.getElementById('contact-form').reset();
+      }, 350);
+    }
+    function submitContact(e) {
+      e.preventDefault();
+      document.getElementById('contact-form').style.display = 'none';
+      document.getElementById('modal-success').classList.add('show');
+    }
+    document.getElementById('modal-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeModal();
     });
-  }, { threshold: 0.08 });
-  fadeEls.forEach(el => obs.observe(el));
-</script>
+
+    /* ── Issue modal ── */
+    function openIssue() {
+      document.getElementById('issue-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeIssue() {
+      document.getElementById('issue-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        document.getElementById('issue-form').style.display = 'block';
+        document.getElementById('issue-success').classList.remove('show');
+        document.getElementById('issue-form').reset();
+      }, 350);
+    }
+    function submitIssue(e) {
+      e.preventDefault();
+      document.getElementById('issue-form').style.display = 'none';
+      document.getElementById('issue-success').classList.add('show');
+    }
+    document.getElementById('issue-overlay').addEventListener('click', function(e) {
+      if (e.target === this) closeIssue();
+    });
+
+    /* ── Page contact form ── */
+    function submitPageContact(e) {
+      e.preventDefault();
+      document.getElementById('page-contact-form').style.display = 'none';
+      const s = document.getElementById('page-contact-success');
+      s.style.display = 'flex';
+    }
+
+    /* ── Keyboard close ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { closeModal(); closeIssue(); }
+    });
+
+    /* ── Fade-up observer ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    window.addEventListener('load', () => {
+      document.querySelectorAll('#hero .fade-up').forEach(el => el.classList.add('visible'));
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
 
 </body>
 </html>
