@@ -336,7 +336,7 @@
           <textarea class="form-field" rows="4" placeholder="Share your thoughts, concerns, or questions for Mayor Thurman…" style="resize:none;" required></textarea>
         </div>
         <button type="submit" class="btn-green" style="width:100%;padding:0.95rem;border-radius:8px;font-size:0.75rem;">
-          Send Message to Mayor Thurman
+          Send Message to Mayor's Office
         </button>
         <p style="font-family:'Outfit';font-weight:300;font-size:0.68rem;color:var(--muted);text-align:center;margin-top:0.85rem;">Your information is kept confidential and used solely to respond to your inquiry.</p>
       </form>
@@ -437,6 +437,7 @@
     <ul style="display:flex;align-items:center;gap:2rem;list-style:none;" class="hidden-mobile">
       <li><a href="#services" class="nav-link">Services</a></li>
       <li><a href="#resources" class="nav-link">Resources</a></li>
+      <li><a href="#mayors-corner" class="nav-link">Mayor's Corner</a></li>
       <li><a href="#security" class="nav-link">Security</a></li>
       <li>
         <button onclick="openModal()" class="btn-gold" style="padding:0.55rem 1.2rem;border-radius:6px;font-size:0.68rem;">
@@ -457,6 +458,7 @@
   <div id="mobile-drawer" style="display:none;flex-direction:column;gap:1rem;padding:1.25rem 1.5rem 1.75rem;border-top:1px solid rgba(255,255,255,0.08);margin-top:0.75rem;">
     <a href="#services" class="nav-link" onclick="toggleMobileMenu()">Services</a>
     <a href="#resources" class="nav-link" onclick="toggleMobileMenu()">Resources</a>
+    <a href="#mayors-corner" class="nav-link" onclick="toggleMobileMenu()">Mayor's Corner</a>
     <a href="#security" class="nav-link" onclick="toggleMobileMenu()">Security</a>
     <button onclick="openModal();toggleMobileMenu();" class="btn-gold" style="padding:0.85rem;border-radius:6px;text-align:center;">Contact Mayor Thurman</button>
   </div>
@@ -506,9 +508,9 @@
         </div>
 
         <!-- Headline -->
-        <h1 class="fade-up" style="transition-delay:0.12s;font-family:'Playfair Display';font-weight:600;font-size:clamp(2.2rem,4.5vw,3.5rem);color:#fff;line-height:1.1;margin-bottom:1rem;">
-          City of Monticello:<br/>
-          <em style="color:var(--gold);font-style:italic;">Mayor's Digital Office</em>
+        <h1 class="fade-up" style="transition-delay:0.12s;font-family:'Playfair Display';font-weight:600;font-size:clamp(2rem,4.5vw,3.3rem);color:#fff;line-height:1.1;margin-bottom:1rem;">
+          A Message from Mayor<br/>
+          <em style="color:var(--gold);font-style:italic;">DeAshley Thurman</em>
         </h1>
 
         <!-- Sub-headline -->
@@ -784,14 +786,115 @@
         <a href="#" style="display:inline-flex;align-items:center;gap:4px;font-family:'Outfit';font-weight:600;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;">View Calendar <i data-lucide="chevron-right" style="width:11px;height:11px;"></i></a>
       </div>
 
+      <!-- Business Portal -->
+      <div class="resource-card fade-up" style="transition-delay:0.42s;padding:1.75rem;border:1px solid #d4b050;background:linear-gradient(135deg,#fffbf0,#fff8e6);">
+        <div class="resource-icon" style="margin-bottom:1.1rem;background:linear-gradient(135deg,#8a6200,var(--gold));">
+          <i data-lucide="store" style="width:20px;height:20px;color:#fff;"></i>
+        </div>
+        <h3 style="font-family:'Playfair Display';font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:0.4rem;">Start a Business in Monticello</h3>
+        <p style="font-family:'Outfit';font-weight:300;font-size:0.8rem;color:var(--muted);line-height:1.6;margin-bottom:1rem;">Downtown development resources, business licenses, incentive programs, and economic growth tools for Jasper County.</p>
+        <a href="#" style="display:inline-flex;align-items:center;gap:4px;font-family:'Outfit';font-weight:700;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:#8a6200;text-decoration:none;border-bottom:1px solid #d4b050;padding-bottom:2px;">Business Portal <i data-lucide="chevron-right" style="width:11px;height:11px;"></i></a>
+      </div>
+
     </div>
   </div>
 </section>
 
 
 <!-- ============================================================
-     SECURITY SECTION
+     CITY OF EXCELLENCE BADGE + MAYOR'S CORNER
 ============================================================ -->
+<section id="mayors-corner" style="background:var(--off-white);padding:5rem 1.5rem;border-top:1px solid var(--rule);">
+  <div style="max-width:1200px;margin:0 auto;">
+
+    <!-- City of Excellence Banner -->
+    <div class="fade-up" style="background:linear-gradient(135deg,#1a3320,#2d5a35);border-radius:16px;padding:2rem 2.5rem;margin-bottom:3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;position:relative;overflow:hidden;">
+      <!-- Subtle grid overlay -->
+      <div class="grid-bg" style="position:absolute;inset:0;border-radius:16px;opacity:0.6;pointer-events:none;"></div>
+      <!-- Gold top bar -->
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),#e2c060,var(--gold));border-radius:16px 16px 0 0;"></div>
+
+      <div style="position:relative;z-index:1;display:flex;align-items:center;gap:1.25rem;">
+        <!-- Seal icon -->
+        <div style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(197,152,26,0.2),rgba(197,152,26,0.08));border:2px solid rgba(197,152,26,0.5);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i data-lucide="award" style="width:24px;height:24px;color:var(--gold);"></i>
+        </div>
+        <div>
+          <p style="font-family:'Outfit';font-weight:400;font-size:0.58rem;letter-spacing:0.28em;text-transform:uppercase;color:rgba(197,152,26,0.7);margin-bottom:3px;">Recognized by the Georgia Municipal Association</p>
+          <h3 style="font-family:'Playfair Display';font-size:1.25rem;font-weight:600;color:#fff;line-height:1.2;">Monticello: A Georgia <em style="color:var(--gold);font-style:italic;">City of Excellence</em></h3>
+          <p style="font-family:'Outfit';font-weight:300;font-size:0.78rem;color:rgba(215,220,210,0.7);margin-top:4px;">Jasper County's seat of government — proud recipient of the GMA City of Excellence designation.</p>
+        </div>
+      </div>
+
+      <div style="position:relative;z-index:1;display:flex;gap:1rem;flex-wrap:wrap;">
+        <div style="text-align:center;padding:0.75rem 1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(197,152,26,0.25);border-radius:8px;">
+          <div style="font-family:'Playfair Display';font-size:1.4rem;font-weight:400;color:#fff;line-height:1;">GMA</div>
+          <div style="font-family:'Outfit';font-weight:300;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(197,152,26,0.6);margin-top:2px;">Certified</div>
+        </div>
+        <div style="text-align:center;padding:0.75rem 1.25rem;background:rgba(255,255,255,0.07);border:1px solid rgba(197,152,26,0.25);border-radius:8px;">
+          <div style="font-family:'Playfair Display';font-size:1.4rem;font-weight:400;color:#fff;line-height:1;">Est.</div>
+          <div style="font-family:'Outfit';font-weight:300;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(197,152,26,0.6);margin-top:2px;">1809</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mayor's Corner -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="mayors-corner-grid">
+      <style>@media(max-width:760px){.mayors-corner-grid{grid-template-columns:1fr!important;}}</style>
+
+      <!-- Mayor's Message -->
+      <div class="fade-up" style="transition-delay:0.08s;background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--green);border-radius:0 12px 12px 0;padding:2rem;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--green-light));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(26,51,32,0.25);">
+            <i data-lucide="user" style="width:18px;height:18px;color:#fff;"></i>
+          </div>
+          <div>
+            <p style="font-family:'Outfit';font-weight:600;font-size:0.72rem;color:var(--green);letter-spacing:0.08em;text-transform:uppercase;">Mayor's Corner</p>
+            <p style="font-family:'Outfit';font-weight:300;font-size:0.7rem;color:var(--muted);">Message from Mayor DeAshley Thurman</p>
+          </div>
+        </div>
+        <h3 style="font-family:'Playfair Display';font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:0.75rem;line-height:1.3;">Welcome to Monticello's New Digital Front Door</h3>
+        <p style="font-family:'Outfit';font-weight:300;font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem;">
+          "Our residents deserve a government that is as modern and accessible as the community we are building together. This digital office is my commitment to making city services transparent, responsive, and available to every family in Jasper County — anytime, anywhere."
+        </p>
+        <p style="font-family:'Playfair Display';font-style:italic;font-size:0.95rem;color:var(--green);font-weight:600;">— Mayor DeAshley Thurman</p>
+        <div style="margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--rule);">
+          <button onclick="openModal()" style="display:inline-flex;align-items:center;gap:6px;font-family:'Outfit';font-weight:600;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);background:none;border:none;cursor:pointer;border-bottom:1px solid var(--rule);padding-bottom:2px;">
+            Contact Mayor Thurman <i data-lucide="chevron-right" style="width:11px;height:11px;"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Newsletter / Updates placeholder -->
+      <div class="fade-up" style="transition-delay:0.16s;background:var(--white);border:1px solid var(--rule);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:2rem;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:1.25rem;">
+          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#8a6200,var(--gold));display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(138,98,0,0.25);">
+            <i data-lucide="newspaper" style="width:18px;height:18px;color:#fff;"></i>
+          </div>
+          <div>
+            <p style="font-family:'Outfit';font-weight:600;font-size:0.72rem;color:#8a6200;letter-spacing:0.08em;text-transform:uppercase;">City Newsletter</p>
+            <p style="font-family:'Outfit';font-weight:300;font-size:0.7rem;color:var(--muted);">Updates from City Hall</p>
+          </div>
+        </div>
+        <h3 style="font-family:'Playfair Display';font-size:1.15rem;font-weight:600;color:var(--text);margin-bottom:0.75rem;line-height:1.3;">Stay Connected with Monticello</h3>
+        <p style="font-family:'Outfit';font-weight:300;font-size:0.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.25rem;">
+          Subscribe to receive the Mayor's newsletter, city announcements, council agendas, and community updates directly in your inbox. Stay informed about everything happening in Monticello.
+        </p>
+        <!-- Email signup placeholder -->
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <input type="email" placeholder="your@email.com" style="flex:1;min-width:160px;background:#f7f7f4;border:1.5px solid var(--rule);color:var(--text);font-family:'Outfit';font-weight:300;font-size:0.85rem;padding:0.65rem 0.85rem;border-radius:6px;outline:none;" onfocus="this.style.borderColor='var(--green)'" onblur="this.style.borderColor='var(--rule)'" />
+          <button class="btn-green" style="padding:0.65rem 1.25rem;border-radius:6px;font-size:0.68rem;white-space:nowrap;">Subscribe</button>
+        </div>
+        <p style="font-family:'Outfit';font-weight:300;font-size:0.68rem;color:var(--muted);margin-top:0.6rem;">No spam. Unsubscribe anytime.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     SECURITY SECTION (originally here — now follows Mayor's Corner)
 <section id="security" class="noise" style="
   background: linear-gradient(150deg, #060e08 0%, #0a1a0c 35%, #112215 65%, #1a3320 100%);
   padding: 5rem 1.5rem; position: relative; overflow: hidden;
@@ -902,6 +1005,7 @@
       <div style="display:flex;align-items:center;gap:2rem;flex-wrap:wrap;justify-content:center;">
         <a href="#services" style="font-family:'Outfit';font-weight:300;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Services</a>
         <a href="#resources" style="font-family:'Outfit';font-weight:300;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Resources</a>
+        <a href="#mayors-corner" style="font-family:'Outfit';font-weight:300;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Mayor's Corner</a>
         <a href="#security" style="font-family:'Outfit';font-weight:300;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.38)'">Security</a>
         <button onclick="openModal()" style="font-family:'Outfit';font-weight:600;font-size:0.65rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);background:none;border:none;cursor:pointer;transition:color 0.2s;" onmouseover="this.style.color='var(--gold-light)'" onmouseout="this.style.color='var(--gold)'">Contact Mayor</button>
       </div>
@@ -925,6 +1029,9 @@
 
     <!-- Legal -->
     <div style="text-align:center;">
+      <p style="font-family:'Outfit';font-weight:400;font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:0.35rem;">
+        123 W Washington St, Monticello, GA 31064 &nbsp;·&nbsp; (706) 468-6946
+      </p>
       <p style="font-family:'Outfit';font-weight:300;font-size:0.68rem;color:rgba(197,152,26,0.45);line-height:1.7;margin-bottom:0.5rem;">
         This is an official prototype for presentation purposes only. All services shown are illustrative of the proposed digital office infrastructure.
       </p>
